@@ -14,6 +14,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="./simple-notify/simple-notify.min.css" />
     <script src="./simple-notify/simple-notify.min.js"></script>
@@ -31,15 +34,17 @@
         <p>Design by Lê Minh Trọng</p>
     </div>
     <div class="container p-2 bg-primary">
-        <div class="row justify-content-end">
-            <div class="col-1">
-                <button class="form-control" onclick="HandelCopy()">Copy</button>
+        <div class="row">
+            <div class="col-12">
+                <div class="float-end me-4">
+                    <button class="btn btn-light" id="btn-copy" onclick="HandelCopy()">Copy</button>
+                </div>
             </div>
         </div>
         <div class="row m-2">
             <div class="col-6 text-center">
                 <textarea name="input" id="input" class="form-control" style="width: 100%; min-height: 500px;"
-                    placeholder="Name of variables..."></textarea>
+                    placeholder="Name of variables... (Ex: id, name, email,...)"></textarea>
             </div>
             <div class="col-6 text-center">
                 <textarea name="output" id="output" class="form-control" style="width: 100%; min-height: 500px;"

@@ -19,6 +19,10 @@ function HandelClick() {
 function HandelCopy() {
     let str = document.getElementById("output").value;
     copyToClipboard(str);
+
+    let btn_copy = document.getElementById("btn-copy");
+    btn_copy.innerHTML = `<span class="text-success"><i class="far fa-check-circle"></i></span> Copied`;
+    setTimeout(() => { btn_copy.innerHTML = `Copy`; }, 2000);
 }
 
 function copyToClipboard(str) {
