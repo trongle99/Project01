@@ -2,6 +2,18 @@ function HandelClick() {
     let element = [];
     let input_value = document.getElementById("input").value;
 
+    if (input_value == '') {
+        new Notify({
+            status: 'warning',
+            title: 'Warning',
+            text: 'Input data is empty',
+            autoclose: true,
+            autotimeout: 2000,
+            position: 'right top'
+        })
+        return false;
+    }
+
     let isMany = input_value.includes(",");
     if (isMany) {
         element = split(input_value);
@@ -42,7 +54,9 @@ const split = (str) => {
     let arrayStrig = str.split(",");
     let newArray = [];
     arrayStrig.map((item) => {
-        newArray.push(item.trim())
+        if (!newArray.includes(item)) {
+            newArray.push(item.trim())
+        }
     })
     return newArray;
 };
