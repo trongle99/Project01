@@ -8,12 +8,10 @@ function HandelClick() {
     } else {
         element.push(input_value);
     }
-    // console.log(element)
 
     convert(element);
 
     document.getElementById("output").value = convert(element);
-    // document.getElementById("output").value = input_value;
 }
 
 function HandelCopy() {
