@@ -35,7 +35,7 @@ function HandelCopy() {
 
     let btn_copy = document.getElementById("btn-copy");
     btn_copy.innerHTML = `<span class="text-success"><i class="far fa-check-circle"></i></span> Copied`;
-    setTimeout(() => { btn_copy.innerHTML = `Copy`; }, 2000);
+    setTimeout(() => { btn_copy.innerHTML = `Copy`; }, 2500);
 }
 
 function copyToClipboard(str) {
