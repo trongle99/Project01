@@ -18,12 +18,10 @@ function HandelClick() {
     if (isMany) {
         element = split(input_value);
     } else {
-        element.push(input_value.replace(/\s/g, '').replace('\n', ''));
+        element.push(removeSpecialCharacters(input_value));
     }
 
-    // convert(element);
-
-    // document.getElementById("output").value = convert(element);
+    document.getElementById("output").value = convert(element);
 
     let result_element = document.querySelector("#php-content");
     result_element.innerHTML = convert(element);
@@ -60,7 +58,7 @@ const split = (str) => {
     let newArray = [];
     arrayStrig.map((item) => {
         if (!newArray.includes(item)) {
-            newArray.push(item.trim().replace(/\s/g, '').replace('\n', ''))
+            newArray.push(removeSpecialCharacters(item))
         }
     })
     return newArray;
@@ -103,6 +101,8 @@ const getterAndSetter = (value) => {
     group += get + set + '\n';
     return group;
 }
+
+const removeSpecialCharacters = str => str.replace(/\s/g, '').replace(/[^\w\s]/gi, '').replace('\n', '');
 
 const snakeToCamel = str =>
     str.charAt(0).toUpperCase() + (str.slice(1).replace(/([-_][a-z])/g, group =>
