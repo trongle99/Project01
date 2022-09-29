@@ -28,16 +28,17 @@
         }
 
         ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
+            width: 6px;
+            height: 0;
         }
 
         ::-webkit-scrollbar-track {
-            background: #fff;
+            background: transparent;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(transparent, #ccc, rgb(180, 180, 180));
+            /* background: linear-gradient(transparent, #ccc, rgb(180, 180, 180)); */
+            background-color: rgb(180, 180, 180);
             border-radius: 6px;
         }
     </style>
@@ -64,7 +65,7 @@
             </div>
             <div class="col-6 text-center">
                 <pre class="language-php line-numbers"
-                    style="width: 100%;height: 500px; overflow-x: inherit; margin-top: 0;"><code id="php-content"></code></pre>
+                    style="width: 100%;height: 500px; margin-top: 0;"><code id="php-content"></code></pre>
                 <textarea name="output" id="output" class="d-none"></textarea>
             </div>
         </div>

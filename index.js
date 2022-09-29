@@ -57,7 +57,7 @@ const split = (str) => {
     let arrayStrig = str.split(",");
     let newArray = [];
     arrayStrig.map((item) => {
-        if (!newArray.includes(item)) {
+        if (!newArray.includes(item) && item != '') {
             newArray.push(removeSpecialCharacters(item))
         }
     })
