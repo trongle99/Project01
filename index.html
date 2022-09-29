@@ -20,8 +20,7 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="./simple-notify/simple-notify.min.css" />
-    <script src="./simple-notify/simple-notify.min.js"></script>
-    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./prism/prism.css" />
 
     <style>
         .notify.notify-autoclose::before {
@@ -29,7 +28,8 @@
         }
 
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 10px;
+            height: 10px;
         }
 
         ::-webkit-scrollbar-track {
@@ -58,12 +58,13 @@
         </div>
         <div class="row m-2">
             <div class="col-6 text-center">
-                <textarea name="input" id="input" class="form-control" style="width: 100%; min-height: 500px;"
+                <textarea name="input" id="input" class="form-control border-0 text-white"
+                    style="width: 100%; min-height: 500px; background-color: #272822;"
                     placeholder="Name of variables... (Ex: id, name, email,...)"></textarea>
             </div>
             <div class="col-6 text-center">
-                <textarea name="output" id="output" class="form-control" style="width: 100%; min-height: 500px;"
-                    placeholder="Output..." readonly></textarea>
+                <pre class="language-php line-numbers"
+                    style="width: 100%;height: 500px; overflow-x: inherit; margin-top: 0;"><code id="php-content"></code></pre>
             </div>
         </div>
         <div class="row justify-content-center py-4">
@@ -76,6 +77,12 @@
     <footer>
         <p class="text-center pt-4">Copyright © 2022 Design by LeMinhTrong</p>
     </footer>
+
+    <!-- Javascript -->
+    <script src="./simple-notify/simple-notify.min.js"></script>
+    <script src="./prism/prism.js"></script>
+    <script src="./index.js"></script>
+    <!-- Javascript -->
 </body>
 
 </html>

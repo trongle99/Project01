@@ -18,12 +18,17 @@ function HandelClick() {
     if (isMany) {
         element = split(input_value);
     } else {
-        element.push(input_value);
+        element.push(input_value.replace(/\s/g, '').replace('\n', ''));
     }
 
-    convert(element);
+    // convert(element);
 
-    document.getElementById("output").value = convert(element);
+    // document.getElementById("output").value = convert(element);
+
+    let result_element = document.querySelector("#php-content");
+    result_element.innerHTML = convert(element);
+
+    Prism.highlightElement(result_element);
 }
 
 function HandelCopy() {
@@ -55,7 +60,7 @@ const split = (str) => {
     let newArray = [];
     arrayStrig.map((item) => {
         if (!newArray.includes(item)) {
-            newArray.push(item.trim())
+            newArray.push(item.trim().replace(/\s/g, '').replace('\n', ''))
         }
     })
     return newArray;
