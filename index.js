@@ -1,12 +1,14 @@
 function HandelClick() {
-    let element = [];
+    let column_name = [];
+    let table_name = document.getElementById("table-name").value;
+    console.log("table_name:", snakeToPascal(table_name));
     let input_value = document.getElementById("input").value;
 
-    if (input_value == '') {
+    if (table_name == '' || input_value == '') {
         new Notify({
             status: 'warning',
             title: 'Warning',
-            text: 'Input data is empty',
+            text: 'Input value is not empty!',
             autoclose: true,
             autotimeout: 2000,
             position: 'right top'
@@ -16,17 +18,17 @@ function HandelClick() {
 
     let isMany = input_value.includes(",");
     if (isMany) {
-        element = split(input_value);
+        column_name = split(input_value);
     } else {
-        element.push(removeSpecialCharacters(input_value));
+        column_name.push(removeSpecialCharacters(input_value));
     }
 
-    document.getElementById("output").value = convert(element);
+    document.getElementById("output").value = convert(table_name, column_name);
 
-    let result_element = document.querySelector("#php-content");
-    result_element.innerHTML = convert(element);
+    let result = document.querySelector("#php-content");
+    result.innerHTML = convert(table_name, column_name);
 
-    Prism.highlightElement(result_element);
+    Prism.highlightElement(result);
 }
 
 function HandelCopy() {
@@ -64,7 +66,7 @@ const split = (str) => {
     return newArray;
 };
 
-const convert = (val) => {
+const convert = (table_name, val) => {
     let content = '';
     let variable = '';
     let exchangeArray = 'public function exchangeArray($data){\n';
@@ -84,7 +86,9 @@ const convert = (val) => {
         get_set += getterAndSetter(item);
     })
 
+    content += `class ${snakeToPascal(table_name)} {\n\n`;
     content += variable + '\n' + exchangeArray + '\n' + arrayCopy + '\n' + get_set;
+    content += '}';
 
     return content;
 }
@@ -94,7 +98,7 @@ const getterAndSetter = (value) => {
     let get = '';
     let set = '';
 
-    let str = snakeToCamel(value);
+    let str = snakeToPascal(value);
     get += `public function get${str}()\n{\n    return $this->${value};\n}\n`;
     set += `public function set${str}($${value})\n{\n    $this->${value} = $${value};\n}\n`
 
@@ -104,10 +108,6 @@ const getterAndSetter = (value) => {
 
 const removeSpecialCharacters = str => str.replace(/\s/g, '').replace(/[^\w\s]/gi, '').replace('\n', '');
 
-const snakeToCamel = str =>
-    str.charAt(0).toUpperCase() + (str.slice(1).replace(/([-_][a-z])/g, group =>
-        group
-            .toUpperCase()
-            .replace('-', '')
-            .replace('_', '')
-    ));
+function snakeToPascal(str) {
+    return _.upperFirst(_.camelCase(str));
+}
